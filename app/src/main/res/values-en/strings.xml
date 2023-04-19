@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GamePlace_App</string>
+    <string name="profil">Profile</string>
+    <string name="stats">Statistics</string>
+    <string name="monEquipe">My Team</string>
+    <string name="prendrePhotos">Take picture</string>
+    <string name="profil_name">LastName FirstName</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="acceuil">Home</string>
+    <string name="textTitle">Game App</string>
+    <string name="parametres">Settings</string>
+    <string name="langage">Langage</string>
+    <string name="tite_langage_param">Langage settings</string>
+    <string name="selectLang">Sélectionnez la langue </string>
+</resources>

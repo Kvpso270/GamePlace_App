@@ -30,4 +30,9 @@
         android:name="fr.android.gameplace_app.AcceuilFragment"
         android:label="fragment_acceuil"
         tools:layout="@layout/fragment_acceuil" />
+    <fragment
+        android:id="@+id/lang_param"
+        android:name="fr.android.gameplace_app.Param_LangageFragment"
+        android:label="fragment_param__langage"
+        tools:layout="@layout/fragment_param__langage" />
 </navigation>
