@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "319392686972",
+    "project_id": "sportappbase",
+    "storage_bucket": "sportappbase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319392686972:android:252ed0688b1c375d9d7af9",
+        "android_client_info": {
+          "package_name": "fr.android.gameplace_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319392686972-03sgd5rcip351ltse3afig3rjg6af59d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.android.gameplace_app",
+            "certificate_hash": "771da260d663e58e560013a07241b341771a76e5"
+          }
+        },
+        {
+          "client_id": "319392686972-g6rck23ahnsbjut69b2hfgbenomhf56l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB_KQMGRjgnPnDehBrKlHQFdkMb4MzmGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319392686972-g6rck23ahnsbjut69b2hfgbenomhf56l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
