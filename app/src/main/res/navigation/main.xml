@@ -13,21 +13,26 @@
     <fragment
         android:id="@+id/menuProfile"
         android:name="fr.android.gameplace_app.ProfilFragment"
-        android:label="Profil"
+        android:label="@string/profil"
         tools:layout="@layout/fragment_profil" />
     <fragment
         android:id="@+id/menuStats"
         android:name="fr.android.gameplace_app.StatsFragment"
-        android:label="Statistiques"
+        android:label="@string/stats"
         tools:layout="@layout/fragment_stats" />
     <fragment
         android:id="@+id/menuPhoto"
         android:name="fr.android.gameplace_app.menuPhoto"
-        android:label="fragment_menu_photo"
+        android:label="@string/prendrePhotos"
         tools:layout="@layout/fragment_menu_photo" />
     <fragment
         android:id="@+id/acceuil"
         android:name="fr.android.gameplace_app.AcceuilFragment"
-        android:label="fragment_acceuil"
+        android:label="@string/acceuil"
         tools:layout="@layout/fragment_acceuil" />
+    <fragment
+        android:id="@+id/lang_param"
+        android:name="fr.android.gameplace_app.Param_LangageFragment"
+        android:label="@string/tite_langage_param"
+        tools:layout="@layout/fragment_param__langage" />
 </navigation>

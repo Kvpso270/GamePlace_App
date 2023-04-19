@@ -10,28 +10,56 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.security.PublicKey;
+
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseManager databaseManager;
+    Spinner spinner;
+    public static String selectLang = String.valueOf(R.string.selectLang);
+    public static final String[] languages = {selectLang,"English","Français"};
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        databaseManager = new DatabaseManager( this);
-        databaseManager.getReadableDatabase();
 
-        databaseManager.insertCoach( "John", "Doe", "john.doe@example.com", "mypassword");
-        databaseManager.insertTeam("Real Madrid", 1, "La Liga", "Madrid", "Espagne", 0, null);
-        databaseManager.insertPlayer("Lionel", "Messi", 34, 1);
-        databaseManager.insertMatch("2023-04-19", "Stade de France", 48.9243, 2.3600, "Avenue Jules Rimet", null);
-        databaseManager.insertMatchStatistics(1, 2, 5, 60.0, 10);
+        /////// ---- variables ---- ///////
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        final TextView textTitle = findViewById(R.id.textTitle);
+
+        //Gestion de la langue
+        spinner = findViewById(R.id.spinner);
+        ///////---- variables ---- ///////
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,languages);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(0);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,13 +68,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //navigationView (menu)
         NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
 
+        //Gere la navigation entre les fragments
         NavController navController = Navigation.findNavController(this,R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView,navController);
 
-        final TextView textTitle = findViewById(R.id.textTitle);
+
+
 
 
         //update le Title de la page selon le fragment
@@ -56,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 textTitle.setText(destination.getLabel());
             }
         });
-        databaseManager.close();
     }
+
+
 }

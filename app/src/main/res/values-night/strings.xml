@@ -3,4 +3,6 @@
     <string name="profil">Profil</string>
     <string name="parametres">Parametres</string>
     <string name="langage">Langage</string>
+    <string name="tite_langage_param">Paramètres langues</string>
+    <string name="selectLang">Sélectionnez la langue </string>
 </resources>
