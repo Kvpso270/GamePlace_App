@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">GamePlace_App</string>
+    <string name="profil">Profil</string>
+    <string name="stats">Statistiques</string>
+    <string name="monEquipe">Mon Equipe</string>
+    <string name="prendrePhotos">Prendre photo</string>
+    <string name="profil_name">Nom Prénom</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="acceuil">Acceuil</string>
+    <string name="textTitle">Game App</string>
+    <string name="parametres">Parametres</string>
+    <string name="langage">Langage</string>
+</resources>

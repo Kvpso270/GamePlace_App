@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/acceuil"
+        android:icon="@drawable/maison"
+        android:title="@string/acceuil"
+        />
+    <item
+        android:id="@+id/menuProfile"
+        android:icon="@drawable/profil"
+        android:title="@string/profil"
+        />
+
+    <item
+        android:id="@+id/menuStats"
+        android:icon="@drawable/stats"
+        android:title="@string/stats"
+        />
+
+    <item
+        android:id="@+id/menuEquipe"
+        android:icon="@drawable/team"
+        android:title="@string/monEquipe"
+        />
+
+    <item
+        android:id="@+id/menuPhoto"
+        android:icon="@drawable/photo"
+        android:title="@string/prendrePhotos"
+        />
+
+    <item android:title="@string/parametres">
+        <menu>
+            <item
+                android:id="@+id/lang_param"
+                android:icon="@drawable/planet"
+                android:title="@string/langage"
+                />
+        </menu>
+
+    </item>
+
+</menu>
