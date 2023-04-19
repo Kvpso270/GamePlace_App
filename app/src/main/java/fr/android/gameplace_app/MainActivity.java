@@ -10,19 +10,43 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseManager databaseManager;
+    Spinner spinner;
+    public static String selectLang = String.valueOf(R.string.selectLang);
+    public static final String[] languages = {"Selectionnez la langue","English","Français"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //Gestion de la langue
+        spinner = findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,languages);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(0);
+
+
         databaseManager = new DatabaseManager( this);
         databaseManager.getReadableDatabase();
 
@@ -33,6 +57,31 @@ public class MainActivity extends AppCompatActivity {
         databaseManager.insertMatchStatistics(1, 2, 5, 60.0, 10);
         final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedLang = parent.getItemAtPosition(position).toString();
+
+                if (selectedLang.equals("English")){
+                    setLocal(MainActivity.this,"en");
+                    finish();
+                    startActivity(getIntent());
+                }else if (selectedLang.equals("Français")){
+                    setLocal(MainActivity.this,"fr");
+                    finish();
+                    startActivity(getIntent());
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         findViewById(R.id.imageMenu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,9 +89,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //navigationView (menu)
         NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
 
+        //Gere la navigation entre les fragments
         NavController navController = Navigation.findNavController(this,R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView,navController);
 
@@ -58,4 +109,14 @@ public class MainActivity extends AppCompatActivity {
         });
         databaseManager.close();
     }
+
+    public void setLocal(Activity activity, String langCode){
+        Locale locale = new Locale(langCode);
+        locale.setDefault(locale);
+        Resources resources = activity.getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config,resources.getDisplayMetrics());
+    }
+
 }
