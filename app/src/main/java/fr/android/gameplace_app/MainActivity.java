@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseFirestore firestore;
+
     private DatabaseManager databaseManager;
     Spinner spinner;
     public static String selectLang = String.valueOf(R.string.selectLang);
@@ -44,24 +44,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Map<String,Object> users = new HashMap<>();
-        users.put("firstName","test");
-        users.put("lastName","test2");
-        users.put("age",32);
 
+
+        FirebaseFirestore firestore;
         firestore = FirebaseFirestore.getInstance();
-        firestore.collection("users").add(users).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, "Failue", Toast.LENGTH_SHORT).show();
-            }
-        });
 
+        FirebaseManager firebaseDatabase = new FirebaseManager(firestore,getApplicationContext());
+        firebaseDatabase.SendData();
         //Gestion de la langue
         spinner = findViewById(R.id.spinner);
 
