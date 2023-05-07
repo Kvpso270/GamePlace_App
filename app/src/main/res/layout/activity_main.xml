@@ -59,13 +59,7 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/main"/>
 
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.MapFragment">
 
-        </fragment>
 
 
 

@@ -75,7 +75,7 @@ public class LocalisationManager extends AppCompatActivity implements LocationLi
                 // On récupère la carte
                 LocalisationManager.this.googleMap = googleMap;
                 // On zoome sur la carte
-                googleMap.moveCamera(CameraUpdateFactory.zoomBy(15));
+                googleMap.moveCamera(CameraUpdateFactory.zoomBy(10));
                 // On affiche la position de l'utilisateur sur la carte
                 googleMap.setMyLocationEnabled(true);
             }
