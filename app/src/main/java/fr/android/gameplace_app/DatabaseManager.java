@@ -22,6 +22,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // Définition des requêtes SQL pour la création des tables matches, match_statistics, coaches, teams et players.
         String match = "CREATE TABLE IF NOT EXISTS matches ( id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, CreationDate DATE, location TEXT, latitude REAL, longitude REAL, street_name TEXT, image BLOB)";
         String stats = "CREATE TABLE IF NOT EXISTS match_statistics (id INTEGER PRIMARY KEY AUTOINCREMENT, match_id INTEGER, goals_scored INTEGER, shots_on_target INTEGER, possession_percentage REAL, fouls_committed INTEGER, FOREIGN KEY (match_id) REFERENCES matches (id))";
         String coach = "CREATE TABLE IF NOT EXISTS coaches (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT, last_name TEXT, email TEXT, password TEXT)";
@@ -35,7 +36,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
 
 
-
+// Exécution des requêtes SQL pour créer les tables dans la base de données et affichage d'un message de confirmation.
         db.execSQL(match);
         db.execSQL(stats);
         db.execSQL(coach);
@@ -45,6 +46,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     }
 
+    // Méthode onUpgrade appelée lorsque la version de la base de données est mise à jour.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int NewVersion) {
         String strSql = "drop table teams";
@@ -52,7 +54,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
         this.onCreate(db);
         Log.i("DATABASE", "onUpgrade invoked");
     }
-
+    // Méthode pour insérer un nouvel entraîneur dans la table coaches (idem pour les fonctions qui suivent)
     public void insertCoach(String first_name, String last_name, String email, String password){
         first_name = first_name.replace("'", "''");
 //        String strlSql = "insert into T_Scores (name, score, when_) values ('"
@@ -147,22 +149,4 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
 
-//    public List<ScoreData> readTop10(){
-//        List<ScoreData> scores = new ArrayList<>();
-//
-//        // TODO
-//        //1ere technique
-//        String strSql = "select * from T_Scores order by score desc limit 10";
-//                Cursor cursor = this.getReadableDatabase().rawQuery(strSql, null);
-//                cursor.moveToFirst();
-//                while(!cursor.isAfterLast()){
-//                    ScoreData score = new ScoreData(cursor.getInt( 0 ),cursor.getString(1),cursor.getInt(2), new Date(cursor.getInt(3)));
-//                    scores.add(score);
-//                    cursor.moveToNext();
-//                }
-//                cursor.close();
-//
-//
-//        return scores;
-//    }
 }
